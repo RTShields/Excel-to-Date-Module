@@ -1,4 +1,4 @@
-# A simple script for MS Excel writers to converte dates
+# A simple script for MS Excel writers to convert dates
 # to numerics and visa versa. Generally to be imported
 # as "xtd" or "xd"
 
