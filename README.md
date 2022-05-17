@@ -11,9 +11,10 @@ There are two functions to this module for now.
   <li>Option 3: YYYY/MM/DD</li>
   <li>Option 4: YY/MM/DD</li>
 </ul>
+<p>By default, the doubling of single digitis via string is set to True, input False to switch off.
 
 <p><i>1.2) Sub function: Doubling Digit</i>
-<br>For the shake of aesthics, should any of the digits be less than ten (10), a zero (0) will be concatenated before the digit when placed in the final string. This is set as the default setting
+<br>For the shake of aesthics, should any of the digits be less than ten (10), a zero (0) will be concatenated before the digit when placed in the final string.
 
 <p><b>2.) D2X(date)</b>
 <br>This will date a given Gregorian Date (in any format listed in X2T's options), and calculate the MS Excel's numeric value for it.
