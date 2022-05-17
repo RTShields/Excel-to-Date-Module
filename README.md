@@ -18,3 +18,5 @@ There are two functions to this module for now.
 
 <p><b>2.) D2X(date)</b>
 <br>This will date a given Gregorian Date in either MM/DD/YYYY, MM/DD/YY, YYYY/MM/DD, or YY/MM/DD format, and convert it into the Excel numeric format.
+<br> Examples: 1/1/1900 will be converted to 1, 12/25/2000 gets converted to 36885
+
