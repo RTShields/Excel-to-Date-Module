@@ -17,4 +17,4 @@ There are two functions to this module for now.
 <br>For the shake of aesthics, should any of the digits be less than ten (10), a zero (0) will be concatenated before the digit when placed in the final string.
 
 <p><b>2.) D2X(date)</b>
-<br>This will date a given Gregorian Date (in any format listed in X2T's options), and calculate the MS Excel's numeric value for it.
+<br>This will date a given Gregorian Date in either MM/DD/YYYY, MM/DD/YY, YYYY/MM/DD, or YY/MM/DD format, and convert it into the Excel numeric format.
