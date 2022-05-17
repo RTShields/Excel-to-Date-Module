@@ -19,9 +19,9 @@ There are two functions to this module for now.
 <li> 31788, Option: 4, Doubling at: False converts to 87/1/11</li>
 </ol><br>Any value below 1 will throw an error, even MS Excel won't convert anything below 1.</i>
 
-<p><i>1.2) Sub function: Doubling Digit</i>
-<br>For the shake of aesthics, should any of the digits be less than ten (10), a zero (0) will be concatenated before the digit when placed in the final string.
-
+<p><i>1.2) Sub function: double_digits(num,cond = True)</i>
+<br>For the shake of aesthetics, this function will check if [num] is a single digit. If True, it will converted to a concatenated string of '0' + str(num), otherwise it will return the double digit number as string. In the case of inputing a year, it will check to see if X2D sends a T/F, which will give back the year as a two digit string or four respectively.
+  
 <p><b>2.) D2X(date)</b>
 <br>This will date a given Gregorian Date in either MM/DD/YYYY, MM/DD/YY, YYYY/MM/DD, or YY/MM/DD format, and convert it into the Excel numeric format.
   <br><i><ol><b>Examples:</b>
