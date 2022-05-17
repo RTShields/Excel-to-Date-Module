@@ -2,10 +2,16 @@
 # to numerics and visa versa. Generally to be imported 
 # as "xtd" or "xd"
 
-def double_digits(num):
+def double_digits(num,cond = True):
     if len(str(num)) < 2:
         r_num = '0' + str(num)
         return r_num
+    elif num > 99:
+        c_num = str(num)
+        if cond == True:
+            return c_num[2:]
+        else:
+            return c_num
     else:
         return str(num)
 
@@ -55,13 +61,13 @@ def X2D(data, form = 1, doubling = True):
 
     # ### Grab the format number and return said string
     if form == 1:  # MM/DD/YYYY
-        string = MM + '/' + DD + '/' + YY
+        string = MM + '/' + DD + '/' + double_digits(years,False)
     elif form == 2:  # MM/DD/YY
-        string = MM + '/' + DD + '/' + YY
+        string = MM + '/' + DD + '/' + double_digits(years,True)
     elif form == 3:  # YYYY/MM/DD
-        string = YY + '/' + MM + '/' + DD
+        string = double_digits(years,False) + '/' + MM + '/' + DD
     else:  # YY/MM/DD
-        string = YY + '/' + MM + '/' + DD
+        string = double_digits(years,True) + '/' + MM + '/' + DD
 
 
     return string
