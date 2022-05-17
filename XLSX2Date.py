@@ -2,7 +2,7 @@
 # to numerics and visa versa. Generally to be imported 
 # as "xtd" or "xd"
 
-def double_digits(num,cond = True):
+def double_digits(num, cond = True):
     if len(str(num)) < 2:
         r_num = '0' + str(num)
         return r_num
@@ -53,11 +53,9 @@ def X2D(data, form = 1, doubling = True):
     if doubling is True:
         MM = double_digits(month)
         DD = double_digits(day)
-        YY = double_digits(years)
     else:
         MM = str(month)
         DD = str(day)
-        YY = str(years)
 
     # ### Grab the format number and return said string
     if form == 1:  # MM/DD/YYYY
