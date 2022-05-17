@@ -1,30 +1,31 @@
 # A simple script for MS Excel writers to converte dates
-# to numerics and visa versa. Generally to be imported 
+# to numerics and visa versa. Generally to be imported
 # as "xtd" or "xd"
 
-def double_digits(num, cond = True):
+def double_digits(num, cond=True):
     if len(str(num)) < 2:
         r_num = '0' + str(num)
         return r_num
     elif num > 99:
         c_num = str(num)
-        if cond == True:
+        if cond is True:
             return c_num[2:]
         else:
             return c_num
     else:
         return str(num)
 
-def X2D(data, form = 1, doubling = True):
+
+def X2D(data, form=1, doubling=True):
     # Take the ##### number and conver it to readable date format
     # Easily calculate the year
     years = int(data / 365.25) + 1900
 
-    # ### Get the Month 
-    if years % 4 == 0:
-        months = [31,29,31,30,31,30,31,31,30,31,30,31]  # Jan - Dec # of days for non leap year
+    # ### Get the Month
+    if years % 4 == 0:  # Check for leap year
+        months = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     else:
-        months = [31,28,31,30,31,30,31,31,30,31,30,31]  # Jan - Dec # of days for non leap year
+        months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
     m_totals = []  # Accuring days within the month
     mt = 0
@@ -48,7 +49,6 @@ def X2D(data, form = 1, doubling = True):
     else:
         day = days_to_count - m_totals[m-1]
 
-
     # Check for doubling
     if doubling is True:
         MM = double_digits(month)
@@ -59,23 +59,22 @@ def X2D(data, form = 1, doubling = True):
 
     # ### Grab the format number and return said string
     if form == 1:  # MM/DD/YYYY
-        string = MM + '/' + DD + '/' + double_digits(years,False)
+        string = MM + '/' + DD + '/' + double_digits(years, False)
     elif form == 2:  # MM/DD/YY
-        string = MM + '/' + DD + '/' + double_digits(years,True)
+        string = MM + '/' + DD + '/' + double_digits(years, True)
     elif form == 3:  # YYYY/MM/DD
-        string = double_digits(years,False) + '/' + MM + '/' + DD
+        string = double_digits(years, False) + '/' + MM + '/' + DD
     else:  # YY/MM/DD
-        string = double_digits(years,True) + '/' + MM + '/' + DD
-
+        string = double_digits(years, True) + '/' + MM + '/' + DD
 
     return string
 
 
 def D2X(data):
-    # Ex. Day 1 equals 1/1/1900,):
+    # Ex. Day 1 equals 1/1/1900
 
     if data.find('/') != -1:
-        # ### Find the slashes to split up the date 
+        # ### Find the slashes to split up the date
         slashes = []
         for char in range(len(data)):
             if data[char] == '/':
@@ -90,7 +89,8 @@ def D2X(data):
             part1 = data[:slashes[0]]
             part2 = data[slashes[0] + 1:slashes[1]]
             part3 = data[slashes[1]+1:]
-            if len(part1) < 3 and int(part1) < 31:  # Make sure this isn't a disguised year format
+            if len(part1) < 3 and int(part1) < 31:
+                # Make sure this isn't a disguised year format
                 MM = int(part1)
                 DD = int(part2)
                 YY = int(part3)
@@ -102,12 +102,12 @@ def D2X(data):
             # ### Calculator how many days in YY Years
             years_to_days = int((YY - 1900) * 365.25)
 
-
-            # ### Calculate how many days in in the months leading up to given date
-            if YY % 4 == 0:
-                months = [31,29,31,30,31,30,31,31,30,31,30,31]  # Jan - Dec # of days for non leap year
+            # ### Calculate how many days in in the months
+            # ### leading up to given date
+            if YY % 4 == 0:  # Check for leap year
+                months = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
             else:
-                months = [31,28,31,30,31,30,31,31,30,31,30,31]  # Jan - Dec # of days for non leap year
+                months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
             months_to_days = 0
             for m in range(MM-1):
@@ -115,7 +115,7 @@ def D2X(data):
 
             # ### Give final number out
             days_total = years_to_days + months_to_days + DD
-            return readout
+            return days_total
 
     else:
         print('Error: invalid format.')
